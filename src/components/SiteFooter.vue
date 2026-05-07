@@ -7,7 +7,7 @@
         <a href="https://github.com/Box-702/blog" target="_blank" rel="noopener">GitHub</a>
       </div>
       <div class="footer-right">
-        <a href="/rss.xml" target="_blank">RSS</a>
+        <a href="https://box-702.github.io/blog/rss.xml" target="_blank">RSS</a>
       </div>
     </div>
   </footer>
@@ -25,25 +25,9 @@ const year = new Date().getFullYear()
   color: var(--color-text-muted);
   font-size: var(--text-sm);
 }
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-.footer-sep {
-  color: var(--color-border);
-}
-.footer-left a,
-.footer-right a {
-  color: var(--color-text-muted);
-}
-.footer-left a:hover,
-.footer-right a:hover {
-  color: var(--color-accent);
-}
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-left { display: flex; align-items: center; gap: var(--space-sm); }
+.footer-sep { color: var(--color-border); }
+.footer-left a, .footer-right a { color: var(--color-text-muted); }
+.footer-left a:hover, .footer-right a:hover { color: var(--color-accent); }
 </style>
