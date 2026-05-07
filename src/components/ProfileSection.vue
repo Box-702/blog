@@ -1,20 +1,19 @@
 <template>
   <section class="profile">
-    <div class="profile-avatar">{{ initials }}</div>
+    <img
+      class="profile-avatar"
+      src="https://github.com/Box-702.png"
+      alt="Avatar"
+    />
     <div class="profile-info">
       <h2 class="profile-name">Box</h2>
       <p class="profile-bio">Frontend learner. Writing about code, design, and everyday discoveries.</p>
       <div class="profile-links">
-        <a :href="'https://github.com/Box-702'" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Box-702" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </section>
 </template>
-
-<script setup>
-// Edit these to customize
-const initials = 'B'
-</script>
 
 <style scoped>
 .profile {
@@ -29,14 +28,8 @@ const initials = 'B'
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-2xl);
-  font-weight: 700;
   flex-shrink: 0;
+  border: 2px solid var(--color-border);
 }
 .profile-name {
   font-size: var(--text-xl);
