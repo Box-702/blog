@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>My Blog</title>
+  <link>https://box-702.github.io/blog/</link>
+  <description>Thoughts on frontend, code, and life.</description>
+  <language>zh-CN</language>
+  <atom:link href="https://box-702.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Hello World</title>
+    <link>https://box-702.github.io/blog/#/post/hello-world</link>
+    <description>My first blog post, documenting the start of learning frontend.</description>
+    <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Vue 3 Composition API Notes</title>
+    <link>https://box-702.github.io/blog/#/post/vue3-composition-api</link>
+    <description>Basic usage and pitfalls of ref, reactive, computed, and watch.</description>
+    <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

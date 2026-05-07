@@ -1,37 +1,30 @@
 <template>
   <div class="home container">
-    <header class="home-header">
-      <h1 class="home-title">Blog</h1>
-      <p class="home-desc">Thoughts on frontend, code, and life.</p>
-    </header>
+    <ProfileSection />
     <SearchBar />
     <PostList :posts="posts" />
+    <TagCloud />
   </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { getAllPosts } from '@/utils/posts'
+import { useSEO } from '@/composables/useSEO'
 import PostList from '@/components/PostList.vue'
 import SearchBar from '@/components/SearchBar.vue'
+import TagCloud from '@/components/TagCloud.vue'
+import ProfileSection from '@/components/ProfileSection.vue'
 
 const posts = getAllPosts()
+
+onMounted(() => {
+  useSEO({ title: '', description: 'Thoughts on frontend, code, and life.' })
+})
 </script>
 
 <style scoped>
 .home {
   padding-bottom: var(--space-2xl);
-}
-.home-header {
-  margin-bottom: var(--space-2xl);
-}
-.home-title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  letter-spacing: -1px;
-  margin-bottom: var(--space-xs);
-}
-.home-desc {
-  font-size: var(--text-base);
-  color: var(--color-text-secondary);
 }
 </style>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "marked": "^17.0.2",
     "vue": "^3.4.0",
     "vue-router": "^4.2.0"
