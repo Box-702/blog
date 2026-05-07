@@ -1,5 +1,6 @@
 import helloWorldRaw from '../posts/hello-world.md?raw'
 import vue3Raw from '../posts/vue3-composition-api.md?raw'
+import tutorialRaw from '../posts/blog-tutorial.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -24,12 +25,9 @@ function parseFrontmatter(raw) {
 
 const postFiles = {
   '../posts/hello-world.md': helloWorldRaw,
-  '../posts/vue3-composition-api.md': vue3Raw
+  '../posts/vue3-composition-api.md': vue3Raw,
+  '../posts/blog-tutorial.md': tutorialRaw
 }
-
-// To add a new post, add both:
-// 1. import newPostRaw from '../posts/new-post.md?raw'
-// 2. '../posts/new-post.md': newPostRaw  in the postFiles object
 
 export function getAllPosts() {
   return Object.entries(postFiles)
