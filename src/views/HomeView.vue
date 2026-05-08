@@ -4,6 +4,7 @@
     <SearchBar />
     <PostList :posts="posts" />
     <TagCloud />
+    <Blogroll />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import PostList from '@/components/PostList.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import TagCloud from '@/components/TagCloud.vue'
 import ProfileSection from '@/components/ProfileSection.vue'
+import Blogroll from '@/components/Blogroll.vue'
 
 const posts = getAllPosts()
 
@@ -24,7 +26,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.home {
-  padding-bottom: var(--space-2xl);
-}
+.home { padding-bottom: var(--space-2xl); }
 </style>
