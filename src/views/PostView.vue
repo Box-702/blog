@@ -26,6 +26,7 @@
 import { computed, onMounted, watch, nextTick } from 'vue'
 import { getPost } from '@/utils/posts'
 import { marked } from 'marked'
+import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.min.css'
 import { useSEO } from '@/composables/useSEO'
@@ -37,16 +38,17 @@ import PrevNextNav from '@/components/PrevNextNav.vue'
 const props = defineProps({ slug: String })
 const post = computed(() => getPost(props.slug))
 
-marked.setOptions({
-  breaks: true,
-  gfm: true,
+marked.use(markedHighlight({
+  langPrefix: 'hljs language-',
   highlight(code, lang) {
     if (lang && hljs.getLanguage(lang)) {
       return hljs.highlight(code, { language: lang }).value
     }
     return hljs.highlightAuto(code).value
   }
-})
+}))
+
+marked.setOptions({ breaks: true, gfm: true })
 
 const renderedContent = computed(() => {
   if (!post.value) return ''

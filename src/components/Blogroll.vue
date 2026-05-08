@@ -7,7 +7,6 @@
         <span class="blogroll-desc">{{ link.desc }}</span>
       </li>
     </ul>
-    <p v-if="!links.length" class="blogroll-empty">No links yet.</p>
   </aside>
 </template>
 
@@ -47,10 +46,6 @@ const links = [
 }
 .blogroll-desc {
   font-size: var(--text-xs);
-  color: var(--color-text-muted);
-}
-.blogroll-empty {
-  font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 </style>

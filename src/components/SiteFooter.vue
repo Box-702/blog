@@ -7,7 +7,7 @@
         <a href="https://github.com/Box-702/blog" target="_blank" rel="noopener">GitHub</a>
       </div>
       <div class="footer-right">
-        <a href="https://box-702.github.io/blog/rss.xml" target="_blank">RSS</a>
+        <a href="rss.xml" target="_blank">RSS</a>
       </div>
     </div>
   </footer>
