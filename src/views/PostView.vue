@@ -37,7 +37,6 @@ import PrevNextNav from '@/components/PrevNextNav.vue'
 const props = defineProps({ slug: String })
 const post = computed(() => getPost(props.slug))
 
-// Configure marked with highlight.js
 marked.setOptions({
   breaks: true,
   gfm: true,
@@ -67,12 +66,37 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-// Add IDs to headings for TOC linking
-function addHeadingIds() {
+// Add IDs to headings for TOC, lazy-load images, add copy buttons
+function enhanceContent() {
   const content = document.querySelector('.post-content')
   if (!content) return
+
+  // Heading IDs
   content.querySelectorAll('h2, h3').forEach(h => {
     h.id = h.textContent.toLowerCase().replace(/[^\w\u4e00-\u9fff]+/g, '-').replace(/(^-|-$)/g, '')
+  })
+
+  // Lazy load images
+  content.querySelectorAll('img').forEach(img => {
+    img.loading = 'lazy'
+  })
+
+  // Add copy buttons to code blocks
+  content.querySelectorAll('pre').forEach(pre => {
+    if (pre.querySelector('.copy-btn')) return
+    const btn = document.createElement('button')
+    btn.className = 'copy-btn'
+    btn.textContent = 'Copy'
+    btn.onclick = () => {
+      const code = pre.querySelector('code')
+      if (code) {
+        navigator.clipboard.writeText(code.textContent || '')
+        btn.textContent = 'Copied'
+        setTimeout(() => { btn.textContent = 'Copy' }, 2000)
+      }
+    }
+    pre.style.position = 'relative'
+    pre.appendChild(btn)
   })
 }
 
@@ -80,10 +104,10 @@ onMounted(() => {
   if (post.value) {
     useSEO({ title: post.value.title, description: post.value.summary })
   }
-  nextTick(addHeadingIds)
+  nextTick(enhanceContent)
 })
 
-watch(renderedContent, () => nextTick(addHeadingIds))
+watch(renderedContent, () => nextTick(enhanceContent))
 watch(() => props.slug, () => {
   if (post.value) {
     useSEO({ title: post.value.title, description: post.value.summary })
@@ -92,9 +116,7 @@ watch(() => props.slug, () => {
 </script>
 
 <style scoped>
-.post {
-  padding-bottom: var(--space-2xl);
-}
+.post { padding-bottom: var(--space-2xl); }
 .post-header { margin-bottom: var(--space-2xl); }
 .post-back { display: inline-block; font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-lg); transition: color 0.2s; }
 .post-back:hover { color: var(--color-accent); }
@@ -110,15 +132,28 @@ watch(() => props.slug, () => {
 .post-content :deep(ul), .post-content :deep(ol) { margin-bottom: var(--space-lg); padding-left: var(--space-xl); }
 .post-content :deep(li) { margin-bottom: var(--space-xs); }
 .post-content :deep(blockquote) { border-left: 3px solid var(--color-accent); padding-left: var(--space-md); margin: var(--space-lg) 0; color: var(--color-text-secondary); font-style: italic; }
-.post-content :deep(pre) { background: #1e1e1e; border-radius: var(--radius); padding: var(--space-lg); overflow-x: auto; margin: var(--space-lg) 0; font-size: var(--text-sm); }
+.post-content :deep(pre) { background: #1e1e1e; border-radius: var(--radius); padding: var(--space-lg); overflow-x: auto; margin: var(--space-lg) 0; font-size: var(--text-sm); position: relative; }
 .post-content :deep(pre code) { background: none; color: #d4d4d4; font-size: 0.875em; padding: 0; }
 .post-content :deep(code) { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-code-bg); padding: 0.15em 0.4em; border-radius: 3px; }
 .post-content :deep(pre code) { background: none; padding: 0; }
 .post-content :deep(a) { text-decoration: underline; }
-.post-content :deep(img) { border-radius: var(--radius); }
+.post-content :deep(img) { border-radius: var(--radius); max-width: 100%; height: auto; }
 .post-content :deep(table) { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
 .post-content :deep(th), .post-content :deep(td) { border: 1px solid var(--color-border); padding: var(--space-sm) var(--space-md); text-align: left; }
 .post-content :deep(th) { background: var(--color-bg-secondary); font-weight: 600; }
+
+/* Copy button */
+.post-content :deep(.copy-btn) {
+  position: absolute; top: 8px; right: 8px;
+  padding: 4px 10px; font-size: 11px; font-family: var(--font-sans);
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+  cursor: pointer; transition: all 0.2s;
+}
+.post-content :deep(.copy-btn:hover) {
+  background: rgba(255,255,255,0.2); color: #fff;
+}
+
 .post-not-found { text-align: center; color: var(--color-text-muted); padding: var(--space-2xl) 0; }
 .post-back-link { display: block; text-align: center; color: var(--color-accent); }
 </style>
