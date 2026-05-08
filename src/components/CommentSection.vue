@@ -7,8 +7,10 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const giscusRef = ref(null)
+const route = useRoute()
 
 onMounted(() => {
   const script = document.createElement('script')
@@ -17,7 +19,8 @@ onMounted(() => {
   script.setAttribute('data-repo-id', 'R_kgDOSXCWMg')
   script.setAttribute('data-category', 'Announcements')
   script.setAttribute('data-category-id', 'DIC_kwDOSXCWMs4C8j76')
-  script.setAttribute('data-mapping', 'pathname')
+  // Use URL mapping so hash-based routes get unique discussion IDs
+  script.setAttribute('data-mapping', 'url')
   script.setAttribute('data-strict', '0')
   script.setAttribute('data-reactions-enabled', '1')
   script.setAttribute('data-emit-metadata', '0')
