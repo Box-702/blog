@@ -13,16 +13,18 @@ const giscusRef = ref(null)
 onMounted(() => {
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
-  script.setAttribute('data-repo', 'YOUR_USERNAME/YOUR_REPO')
-  script.setAttribute('data-repo-id', 'YOUR_REPO_ID')
+  script.setAttribute('data-repo', 'Box-702/blog')
+  script.setAttribute('data-repo-id', 'R_kgDOSXCWMg')
   script.setAttribute('data-category', 'Announcements')
-  script.setAttribute('data-category-id', 'YOUR_CATEGORY_ID')
+  script.setAttribute('data-category-id', 'DIC_kwDOSXCWMs4C8j76')
   script.setAttribute('data-mapping', 'pathname')
+  script.setAttribute('data-strict', '0')
   script.setAttribute('data-reactions-enabled', '1')
   script.setAttribute('data-emit-metadata', '0')
-  script.setAttribute('data-input-position', 'bottom')
+  script.setAttribute('data-input-position', 'top')
   script.setAttribute('data-theme', 'preferred_color_scheme')
   script.setAttribute('data-lang', 'zh-CN')
+  script.setAttribute('data-loading', 'lazy')
   script.crossOrigin = 'anonymous'
   script.async = true
   giscusRef.value?.appendChild(script)
