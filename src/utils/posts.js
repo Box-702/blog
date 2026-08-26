@@ -1,6 +1,9 @@
 import helloWorldRaw from '../posts/hello-world.md?raw'
 import vue3Raw from '../posts/vue3-composition-api.md?raw'
 import tutorialRaw from '../posts/blog-tutorial.md?raw'
+import viteGuideRaw from '../posts/vite-guide.md?raw'
+import gitWorkflowRaw from '../posts/git-workflow.md?raw'
+import cssModernRaw from '../posts/css-modern.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -26,7 +29,10 @@ function parseFrontmatter(raw) {
 const postFiles = {
   '../posts/hello-world.md': helloWorldRaw,
   '../posts/vue3-composition-api.md': vue3Raw,
-  '../posts/blog-tutorial.md': tutorialRaw
+  '../posts/blog-tutorial.md': tutorialRaw,
+  '../posts/vite-guide.md': viteGuideRaw,
+  '../posts/git-workflow.md': gitWorkflowRaw,
+  '../posts/css-modern.md': cssModernRaw
 }
 
 export function getAllPosts() {
