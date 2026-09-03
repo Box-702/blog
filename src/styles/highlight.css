@@ -1,0 +1,91 @@
+/* GitHub-style syntax highlighting that follows the site theme.
+   Colors are driven by CSS variables defined in variables.css:
+   light values in :root, dark values under html.dark. */
+
+pre code.hljs,
+.hljs {
+  color: var(--hl-fg);
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-code,
+.hljs-formula {
+  color: var(--hl-comment);
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: var(--hl-keyword);
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: var(--hl-title);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: var(--hl-attr);
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: var(--hl-string);
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: var(--hl-builtin);
+}
+
+.hljs-name,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: var(--hl-name);
+}
+
+.hljs-section {
+  color: var(--hl-section);
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: var(--hl-bullet);
+}
+
+.hljs-emphasis {
+  color: var(--hl-fg);
+  font-style: italic;
+}
+
+.hljs-strong {
+  color: var(--hl-fg);
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: var(--hl-name);
+  background-color: transparent;
+}
+
+.hljs-deletion {
+  color: var(--hl-keyword);
+  background-color: transparent;
+}

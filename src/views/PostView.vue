@@ -62,7 +62,6 @@ import yaml from 'highlight.js/lib/languages/yaml'
 import markdown from 'highlight.js/lib/languages/markdown'
 import xml from 'highlight.js/lib/languages/xml'
 import dockerfile from 'highlight.js/lib/languages/dockerfile'
-import 'highlight.js/styles/github-dark.min.css'
 import { useSEO } from '@/composables/useSEO'
 import TagBadge from '@/components/TagBadge.vue'
 import CategoryBadge from '@/components/CategoryBadge.vue'
@@ -238,8 +237,8 @@ watch(() => props.slug, () => {
 .post-content :deep(ul), .post-content :deep(ol) { margin-bottom: var(--space-lg); padding-left: var(--space-xl); }
 .post-content :deep(li) { margin-bottom: var(--space-xs); }
 .post-content :deep(blockquote) { border-left: 3px solid var(--color-accent); padding-left: var(--space-md); margin: var(--space-lg) 0; color: var(--color-text-secondary); font-style: italic; }
-.post-content :deep(pre) { background: #1e1e1e; border-radius: var(--radius); padding: var(--space-lg); overflow-x: auto; margin: var(--space-lg) 0; font-size: var(--text-sm); position: relative; }
-.post-content :deep(pre code) { background: none; color: #d4d4d4; font-size: 0.875em; padding: 0; }
+.post-content :deep(pre) { background: var(--hl-bg); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-lg); overflow-x: auto; margin: var(--space-lg) 0; font-size: var(--text-sm); position: relative; }
+.post-content :deep(pre code) { background: none; color: var(--hl-fg); font-size: 0.875em; padding: 0; }
 .post-content :deep(code) { font-family: var(--font-mono); font-size: 0.875em; background: var(--color-code-bg); padding: 0.15em 0.4em; border-radius: 3px; }
 .post-content :deep(pre code) { background: none; padding: 0; }
 .post-content :deep(a) { text-decoration: underline; }
@@ -252,12 +251,13 @@ watch(() => props.slug, () => {
 .post-content :deep(.copy-btn) {
   position: absolute; top: 8px; right: 8px;
   padding: 4px 10px; font-size: 11px; font-family: var(--font-sans);
-  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+  background: var(--color-bg-secondary); color: var(--color-text-secondary);
+  border: 1px solid var(--color-border); border-radius: 4px;
   cursor: pointer; transition: all 0.2s;
 }
 .post-content :deep(.copy-btn:hover) {
-  background: rgba(255,255,255,0.2); color: #fff;
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
 }
 
 .post-not-found { text-align: center; color: var(--color-text-muted); padding: var(--space-2xl) 0; }
