@@ -4,6 +4,7 @@
       <router-link to="/" class="nav-logo">My Blog</router-link>
       <nav class="nav-links">
         <router-link to="/" class="nav-link">Home</router-link>
+        <router-link to="/categories" class="nav-link">Categories</router-link>
         <button @click="toggle" class="theme-btn" :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
           <span v-if="isDark" class="theme-icon">&#9790;</span>
           <span v-else class="theme-icon">&#9728;</span>

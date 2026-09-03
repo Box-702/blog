@@ -1,9 +1,10 @@
-import helloWorldRaw from '../posts/hello-world.md?raw'
 import vue3Raw from '../posts/vue3-composition-api.md?raw'
 import tutorialRaw from '../posts/blog-tutorial.md?raw'
 import viteGuideRaw from '../posts/vite-guide.md?raw'
 import gitWorkflowRaw from '../posts/git-workflow.md?raw'
 import cssModernRaw from '../posts/css-modern.md?raw'
+import dockerComposeRaw from '../posts/docker-compose-guide.md?raw'
+import leetcode42Raw from '../posts/leetcode-42-trapping-rain-water.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -27,12 +28,13 @@ function parseFrontmatter(raw) {
 }
 
 const postFiles = {
-  '../posts/hello-world.md': helloWorldRaw,
   '../posts/vue3-composition-api.md': vue3Raw,
   '../posts/blog-tutorial.md': tutorialRaw,
   '../posts/vite-guide.md': viteGuideRaw,
   '../posts/git-workflow.md': gitWorkflowRaw,
-  '../posts/css-modern.md': cssModernRaw
+  '../posts/css-modern.md': cssModernRaw,
+  '../posts/docker-compose-guide.md': dockerComposeRaw,
+  '../posts/leetcode-42-trapping-rain-water.md': leetcode42Raw
 }
 
 export function getAllPosts() {
@@ -44,6 +46,7 @@ export function getAllPosts() {
         slug,
         title: data.title || slug,
         date: data.date || '',
+        category: data.category || '',
         tags: Array.isArray(data.tags) ? data.tags : (data.tags ? [data.tags] : []),
         summary: data.summary || '',
         content
@@ -67,4 +70,17 @@ export function getAllTags() {
 
 export function getPostsByTag(tag) {
   return getAllPosts().filter(p => p.tags.includes(tag))
+}
+
+export function getAllCategories() {
+  const catMap = {}
+  getAllPosts().forEach(post => {
+    if (!post.category) return
+    catMap[post.category] = (catMap[post.category] || 0) + 1
+  })
+  return Object.entries(catMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count)
+}
+
+export function getPostsByCategory(category) {
+  return getAllPosts().filter(p => p.category === category)
 }

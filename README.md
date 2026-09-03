@@ -30,6 +30,7 @@ npm run build    # Production build to dist/
 ---
 title: Article Title
 date: 2026-05-08
+category: Frontend       # category (optional)
 tags: [Tag1, Tag2]
 summary: Brief summary shown on card
 ---

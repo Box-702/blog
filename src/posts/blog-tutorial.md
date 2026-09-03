@@ -2,6 +2,7 @@
 title: 个人博客搭建教程 — Vue 3 + Vite + GitHub Pages 零成本部署
 date: 2026-05-08
 tags: [教程, 前端, Vue]
+category: 前端
 summary: 从零搭建一个 Markdown 驱动的个人博客，支持暗色模式、全文搜索、代码高亮、评论系统，免费部署到 GitHub Pages。包含完整的使用方法和自定义指南。
 ---
 
@@ -66,7 +67,8 @@ blog/
 ---
 title: 文章标题
 date: 2026-05-08
-tags: [标签1, 标签2]
+category: 前端        # 分类（大类，可选）
+tags: [标签1, 标签2]   # 标签（细分）
 summary: 文章摘要，显示在首页卡片和 SEO 描述中
 ---
 
@@ -100,7 +102,6 @@ import myArticleRaw from '../posts/my-article.md?raw'
 
 // 在 postFiles 对象中添加
 const postFiles = {
-  '../posts/hello-world.md': helloWorldRaw,
   '../posts/vue3-composition-api.md': vue3Raw,
   '../posts/my-article.md': myArticleRaw,  // 新增这一行
 }

@@ -2,6 +2,7 @@
 title: 现代 CSS 技巧
 date: 2026-05-09
 tags: [CSS, 前端]
+category: 前端
 summary: 掌握现代 CSS 特性，让你的样式代码更简洁高效。
 ---
 

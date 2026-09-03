@@ -3,6 +3,7 @@
     <ProfileSection />
     <SearchBar />
     <PostList :posts="posts" />
+    <CategoryCloud />
     <TagCloud />
     <Blogroll />
   </div>
@@ -15,6 +16,7 @@ import { useSEO } from '@/composables/useSEO'
 import PostList from '@/components/PostList.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import TagCloud from '@/components/TagCloud.vue'
+import CategoryCloud from '@/components/CategoryCloud.vue'
 import ProfileSection from '@/components/ProfileSection.vue'
 import Blogroll from '@/components/Blogroll.vue'
 

@@ -9,6 +9,7 @@ export function useSearch() {
     const q = query.value.toLowerCase()
     return allPosts.filter(p =>
       p.title.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q) ||
       p.tags.some(t => t.toLowerCase().includes(q)) ||
       p.summary.toLowerCase().includes(q)
     )

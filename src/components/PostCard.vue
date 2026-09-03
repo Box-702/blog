@@ -8,6 +8,9 @@
       <span class="post-reading-time">{{ readingTime }}</span>
     </div>
     <p v-if="post.summary" class="post-summary">{{ post.summary }}</p>
+    <div v-if="post.category" class="post-tags">
+      <CategoryBadge :category="post.category" />
+    </div>
     <div v-if="post.tags.length" class="post-tags">
       <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
     </div>
@@ -17,6 +20,7 @@
 <script setup>
 import { computed } from 'vue'
 import TagBadge from './TagBadge.vue'
+import CategoryBadge from './CategoryBadge.vue'
 
 const props = defineProps({ post: Object })
 

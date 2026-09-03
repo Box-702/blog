@@ -7,6 +7,9 @@
         <time class="post-date" :datetime="post.date">{{ formatDate(post.date) }}</time>
         <span class="post-reading-time">{{ readingTime }}</span>
       </div>
+      <div v-if="post.category" class="post-tags">
+        <CategoryBadge :category="post.category" />
+      </div>
       <div v-if="post.tags.length" class="post-tags">
         <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
       </div>
@@ -31,6 +34,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.min.css'
 import { useSEO } from '@/composables/useSEO'
 import TagBadge from '@/components/TagBadge.vue'
+import CategoryBadge from '@/components/CategoryBadge.vue'
 import CommentSection from '@/components/CommentSection.vue'
 import TableOfContents from '@/components/TableOfContents.vue'
 import PrevNextNav from '@/components/PrevNextNav.vue'
