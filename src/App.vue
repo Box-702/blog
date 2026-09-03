@@ -1,7 +1,8 @@
 <template>
+  <a href="#main" class="skip-link">Skip to content</a>
   <ReadingProgress />
   <NavBar />
-  <main class="main">
+  <main id="main" class="main">
     <router-view />
   </main>
   <SiteFooter />

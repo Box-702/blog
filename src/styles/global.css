@@ -47,12 +47,56 @@ pre {
 }
 
 .container {
-  max-width: var(--max-width);
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 var(--space-lg);
 }
+
+/* Two-column layout: main content + sticky sidebar (wide screens), stacked (narrow) */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .layout.layout-2col {
+    grid-template-columns: minmax(0, 1fr) var(--sidebar-w);
+    gap: var(--space-2xl);
+  }
+}
+.layout-main {
+  min-width: 0;
+}
+.layout-side {
+  min-width: 0;
+}
+@media (min-width: 960px) {
+  .layout-side.is-sticky {
+    position: sticky;
+    top: 88px;
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+  }
+}
+
+/* Article layout: TOC sits above content on mobile, in the right rail on desktop */
 
 ::selection {
   background: var(--color-accent);
   color: #fff;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.skip-link:focus {
+  left: 0;
 }

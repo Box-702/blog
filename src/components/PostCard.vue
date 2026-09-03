@@ -41,10 +41,8 @@ function formatDate(dateStr) {
 .post-card {
   padding: var(--space-xl) 0;
   border-bottom: 1px solid var(--color-border);
-  transition: padding-left 0.2s;
 }
 .post-card:first-child { padding-top: 0; }
-.post-card:hover { padding-left: var(--space-sm); }
 .post-card-link { display: block; margin-bottom: var(--space-sm); }
 .post-title { font-size: var(--text-xl); font-weight: 600; color: var(--color-text); line-height: 1.4; transition: color 0.2s; }
 .post-title:hover { color: var(--color-accent); }

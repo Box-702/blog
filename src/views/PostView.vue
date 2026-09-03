@@ -1,24 +1,47 @@
 <template>
-  <article v-if="post" class="post container">
-    <header class="post-header">
-      <router-link to="/" class="post-back">&larr; Back</router-link>
-      <h1 class="post-title">{{ post.title }}</h1>
-      <div class="post-meta">
-        <time class="post-date" :datetime="post.date">{{ formatDate(post.date) }}</time>
-        <span class="post-reading-time">{{ readingTime }}</span>
-      </div>
-      <div v-if="post.category" class="post-tags">
-        <CategoryBadge :category="post.category" />
-      </div>
-      <div v-if="post.tags.length" class="post-tags">
-        <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
-      </div>
-    </header>
-    <TableOfContents :content="post.content" />
-    <div class="post-content" ref="postContent" v-html="renderedContent" />
-    <PrevNextNav :current-slug="post.slug" />
-    <CommentSection />
-  </article>
+  <div v-if="post" class="container">
+    <div class="layout layout-2col">
+      <main class="layout-main">
+        <nav class="breadcrumb">
+          <router-link to="/">Home</router-link>
+          <span class="bc-sep">/</span>
+          <router-link v-if="post.category" :to="`/category/${post.category}`">{{ post.category }}</router-link>
+          <template v-if="post.category"><span class="bc-sep">/</span></template>
+          <span class="bc-current">{{ post.title }}</span>
+        </nav>
+
+        <article class="post">
+          <details class="toc-mobile">
+            <summary>Contents</summary>
+            <TableOfContents :content="post.content" />
+          </details>
+
+          <header class="post-header">
+            <h1 class="post-title">{{ post.title }}</h1>
+            <div class="post-meta">
+              <time class="post-date" :datetime="post.date">{{ formatDate(post.date) }}</time>
+              <span class="post-reading-time">{{ readingTime }}</span>
+            </div>
+            <div v-if="post.category" class="post-tags">
+              <CategoryBadge :category="post.category" />
+            </div>
+            <div v-if="post.tags.length" class="post-tags">
+              <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
+            </div>
+          </header>
+
+          <div class="post-content" ref="postContent" v-html="renderedContent" />
+          <PrevNextNav :current-slug="post.slug" />
+          <RelatedPosts :current="post" />
+        </article>
+        <CommentSection />
+      </main>
+
+      <aside class="layout-side is-sticky toc-sidebar">
+        <TableOfContents :content="post.content" />
+      </aside>
+    </div>
+  </div>
   <div v-else class="container">
     <p class="post-not-found">Article not found.</p>
     <router-link to="/" class="post-back-link">&larr; Back to home</router-link>
@@ -48,6 +71,7 @@ import CategoryBadge from '@/components/CategoryBadge.vue'
 import CommentSection from '@/components/CommentSection.vue'
 import TableOfContents from '@/components/TableOfContents.vue'
 import PrevNextNav from '@/components/PrevNextNav.vue'
+import RelatedPosts from '@/components/RelatedPosts.vue'
 
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('typescript', typescript)
@@ -165,6 +189,42 @@ watch(() => props.slug, () => {
 
 <style scoped>
 .post { padding-bottom: var(--space-2xl); }
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: var(--space-xl) 0 var(--space-xl);
+}
+.breadcrumb a { color: var(--color-text-muted); }
+.breadcrumb a:hover { color: var(--color-accent); }
+.bc-sep { color: var(--color-border); }
+.bc-current {
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.toc-mobile {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+.toc-mobile summary {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+.toc-sidebar { display: none; }
+@media (min-width: 960px) {
+  .toc-sidebar { display: block; }
+  .toc-mobile { display: none; }
+}
 .post-header { margin-bottom: var(--space-2xl); }
 .post-back { display: inline-block; font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-lg); transition: color 0.2s; }
 .post-back:hover { color: var(--color-accent); }
@@ -172,7 +232,7 @@ watch(() => props.slug, () => {
 .post-meta { display: flex; align-items: center; gap: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .post-reading-time::before { content: "\00B7"; margin-right: var(--space-md); }
 .post-tags { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
-.post-content { font-size: var(--text-lg); line-height: 1.8; color: var(--color-text); }
+.post-content { font-size: var(--text-lg); line-height: 1.8; color: var(--color-text); max-width: var(--max-width); }
 .post-content :deep(h2), .post-content :deep(h3) { font-weight: 600; line-height: 1.3; margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
 .post-content :deep(h2) { font-size: var(--text-2xl); padding-bottom: var(--space-xs); border-bottom: 1px solid var(--color-border); }
 .post-content :deep(h3) { font-size: var(--text-xl); }

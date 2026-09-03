@@ -1,11 +1,17 @@
 <template>
   <div class="home container">
-    <ProfileSection />
-    <SearchBar />
-    <PostList :posts="posts" />
-    <CategoryCloud />
-    <TagCloud />
-    <Blogroll />
+    <div class="layout layout-2col">
+      <main class="layout-main">
+        <SearchBar />
+        <PostList :posts="posts" />
+      </main>
+      <aside class="layout-side is-sticky">
+        <ProfileSection />
+        <CategoryCloud />
+        <TagCloud />
+        <Blogroll />
+      </aside>
+    </div>
   </div>
 </template>
 
@@ -28,5 +34,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.home { padding-bottom: var(--space-2xl); }
+.home {
+  padding-bottom: var(--space-2xl);
+}
 </style>
