@@ -27,7 +27,7 @@ const props = defineProps({ post: Object })
 const readingTime = computed(() => {
   const words = (props.post.content || '').replace(/[#*`\[\]()>\-|=_]/g, '').split(/\s+/).length
   const mins = Math.max(1, Math.ceil(words / 250))
-  return `${mins} min read`
+  return `${mins} 分钟阅读`
 })
 
 function formatDate(dateStr) {

@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <PostCard v-for="post in posts" :key="post.slug" :post="post" />
-    <p v-if="!posts.length" class="post-empty">No articles yet.</p>
+    <p v-if="!posts.length" class="post-empty">还没有文章。</p>
   </div>
 </template>
 

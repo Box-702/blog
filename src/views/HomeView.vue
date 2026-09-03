@@ -1,15 +1,15 @@
 <template>
   <div class="home container">
     <section class="hero">
-      <h1 class="hero-title">Writing about code, tooling, and the craft of building things.</h1>
+      <h1 class="hero-title">写代码、工具，以及做东西的手艺。</h1>
       <p class="hero-sub">
-        Notes on frontend, algorithms, and dev tools: Vue, CSS, Git, Docker, and LeetCode.
-        Written while I learn, so the trails are fresh.
+        关于前端、算法与开发工具的笔记：Vue、CSS、Git、Docker 和 LeetCode。
+        一边学一边写，脚印都是新的。
       </p>
       <div class="hero-stats">
-        <span class="stat">{{ posts.length }} posts</span>
-        <span class="stat">{{ categories.length }} categories</span>
-        <span class="stat">{{ tags.length }} tags</span>
+        <span class="stat">{{ posts.length }} 篇文章</span>
+        <span class="stat">{{ categories.length }} 个分类</span>
+        <span class="stat">{{ tags.length }} 个标签</span>
       </div>
     </section>
 
@@ -44,7 +44,7 @@ const categories = getAllCategories()
 const tags = getAllTags()
 
 onMounted(() => {
-  useSEO({ title: '', description: 'A personal blog about frontend, algorithms, and dev tools.', type: 'website', url: '/' })
+  useSEO({ title: '', description: '一个关于前端、算法与开发工具的个人博客。', type: 'website', url: '/' })
 })
 </script>
 

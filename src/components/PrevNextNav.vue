@@ -1,12 +1,12 @@
 <template>
   <nav v-if="prev || next" class="prev-next">
     <router-link v-if="prev" :to="`/post/${prev.slug}`" class="pn-link pn-prev">
-      <span class="pn-label">Previous</span>
+      <span class="pn-label">上一篇</span>
       <span class="pn-title">{{ prev.title }}</span>
     </router-link>
     <span v-else class="pn-empty"></span>
     <router-link v-if="next" :to="`/post/${next.slug}`" class="pn-link pn-next">
-      <span class="pn-label">Next</span>
+      <span class="pn-label">下一篇</span>
       <span class="pn-title">{{ next.title }}</span>
     </router-link>
     <span v-else class="pn-empty"></span>

@@ -1,6 +1,6 @@
 <template>
   <aside class="category-cloud">
-    <h3 class="category-cloud-title">Categories</h3>
+    <h3 class="category-cloud-title">分类</h3>
     <div class="category-cloud-list">
       <router-link
         v-for="cat in categories"

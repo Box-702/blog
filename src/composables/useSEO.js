@@ -1,6 +1,6 @@
-const SITE_NAME = 'My Blog'
+const SITE_NAME = '我的博客'
 const SITE_URL = 'https://box-702.github.io/blog'
-const AUTHOR = 'box-702'
+const AUTHOR = 'Box'
 
 function upsertMeta(attr, key, content) {
   if (!content) return

@@ -1,8 +1,8 @@
 <template>
   <div class="not-found container">
     <h1>404</h1>
-    <p>Page not found.</p>
-    <router-link to="/" class="nf-link">&larr; Back to home</router-link>
+    <p>页面不存在。</p>
+    <router-link to="/" class="nf-link">&larr; 返回首页</router-link>
   </div>
 </template>
 

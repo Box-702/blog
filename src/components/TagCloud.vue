@@ -1,6 +1,6 @@
 <template>
   <aside class="tag-cloud">
-    <h3 class="tag-cloud-title">Tags</h3>
+    <h3 class="tag-cloud-title">标签</h3>
     <div class="tag-cloud-list">
       <router-link
         v-for="tag in tags"

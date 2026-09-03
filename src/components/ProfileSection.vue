@@ -7,7 +7,7 @@
     />
     <div class="profile-info">
       <h2 class="profile-name">Box</h2>
-      <p class="profile-bio">Frontend learner. Writing about code, design, and everyday discoveries.</p>
+      <p class="profile-bio">前端学习者。记录代码、设计与日常发现。</p>
       <div class="profile-links">
         <a href="https://github.com/Box-702" target="_blank" rel="noopener">GitHub</a>
       </div>

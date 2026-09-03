@@ -1,5 +1,5 @@
 <template>
-  <button v-show="visible" class="back-to-top" @click="scrollToTop" title="Back to top">
+  <button v-show="visible" class="back-to-top" @click="scrollToTop" title="回到顶部">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
       <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
     </svg>

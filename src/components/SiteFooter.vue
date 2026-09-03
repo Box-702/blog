@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <span>&copy; {{ year }} My Blog</span>
+        <span>&copy; {{ year }} 我的博客</span>
         <span class="footer-sep">|</span>
         <a href="https://github.com/Box-702/blog" target="_blank" rel="noopener">GitHub</a>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <aside class="blogroll">
-    <h3 class="blogroll-title">Friends</h3>
+    <h3 class="blogroll-title">友链</h3>
     <ul class="blogroll-list">
       <li v-for="link in links" :key="link.name" class="blogroll-item">
         <a :href="link.url" target="_blank" rel="noopener">{{ link.name }}</a>

@@ -1,6 +1,6 @@
 <template>
   <section class="comments-section">
-    <h2 class="comments-heading">Comments</h2>
+    <h2 class="comments-heading">评论</h2>
     <div ref="giscusRef" class="comments-container" />
   </section>
 </template>

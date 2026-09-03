@@ -1,10 +1,10 @@
 <template>
   <header class="navbar">
     <div class="container nav-inner">
-      <router-link to="/" class="nav-logo">My Blog</router-link>
+      <router-link to="/" class="nav-logo">我的博客</router-link>
       <nav class="nav-links">
-        <router-link to="/" class="nav-link">Home</router-link>
-        <button @click="toggle" class="theme-btn" :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+        <router-link to="/" class="nav-link">首页</router-link>
+        <button @click="toggle" class="theme-btn" :title="isDark ? '切换到亮色模式' : '切换到暗色模式'">
           <span v-if="isDark" class="theme-icon">&#9790;</span>
           <span v-else class="theme-icon">&#9728;</span>
         </button>

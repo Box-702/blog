@@ -3,9 +3,9 @@
     <div class="layout layout-2col">
       <main class="layout-main">
         <header class="category-header">
-          <router-link to="/" class="category-back">&larr; Home</router-link>
+          <router-link to="/" class="category-back">&larr; 首页</router-link>
           <h1 class="category-title">{{ category }}</h1>
-          <p class="category-count">{{ posts.length }} article(s)</p>
+          <p class="category-count">{{ posts.length }} 篇文章</p>
         </header>
         <PostList :posts="posts" />
       </main>

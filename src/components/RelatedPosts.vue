@@ -1,6 +1,6 @@
 <template>
   <section v-if="related.length" class="related">
-    <h2 class="related-title">Related</h2>
+    <h2 class="related-title">相关文章</h2>
     <ul class="related-list">
       <li v-for="p in related" :key="p.slug" class="related-item">
         <router-link :to="`/post/${p.slug}`" class="related-link">

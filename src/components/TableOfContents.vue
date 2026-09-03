@@ -1,6 +1,6 @@
 <template>
   <nav v-if="headings.length" class="toc">
-    <h4 class="toc-title">Contents</h4>
+    <h4 class="toc-title">目录</h4>
     <a
       v-for="(h, i) in headings"
       :key="i"

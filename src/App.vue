@@ -1,5 +1,5 @@
 <template>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">跳到正文</a>
   <ReadingProgress />
   <NavBar />
   <main id="main" class="main">

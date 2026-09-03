@@ -3,7 +3,7 @@
     <div class="layout layout-2col">
       <main class="layout-main">
         <nav class="breadcrumb">
-          <router-link to="/">Home</router-link>
+          <router-link to="/">首页</router-link>
           <span class="bc-sep">/</span>
           <router-link v-if="post.category" :to="`/category/${post.category}`">{{ post.category }}</router-link>
           <template v-if="post.category"><span class="bc-sep">/</span></template>
@@ -12,7 +12,7 @@
 
         <article class="post">
           <details class="toc-mobile">
-            <summary>Contents</summary>
+            <summary>目录</summary>
             <TableOfContents :content="post.content" />
           </details>
 
@@ -43,8 +43,8 @@
     </div>
   </div>
   <div v-else class="container">
-    <p class="post-not-found">Article not found.</p>
-    <router-link to="/" class="post-back-link">&larr; Back to home</router-link>
+    <p class="post-not-found">文章不存在。</p>
+    <router-link to="/" class="post-back-link">&larr; 返回首页</router-link>
   </div>
 </template>
 
@@ -113,7 +113,7 @@ const readingTime = computed(() => {
   if (!post.value) return ''
   const words = post.value.content.replace(/[#*`\[\]()>\-|=_]/g, '').split(/\s+/).length
   const mins = Math.max(1, Math.ceil(words / 250))
-  return `${mins} min read`
+  return `${mins} 分钟阅读`
 })
 
 function formatDate(dateStr) {
