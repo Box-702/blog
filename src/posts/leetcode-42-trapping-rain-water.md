@@ -2,7 +2,7 @@
 title: LeetCode 42. 接雨水 —— 双指针解法详解
 date: 2026-06-18
 category: 算法
-tags: [LeetCode, 算法, 双指针, Python]
+tags: [LeetCode, 双指针, Python]
 image: /blog/trapping-rain-water.png
 summary: 从暴力到动态规划，再到 O(1) 空间的双指针，彻底理解 LeetCode 42「接雨水」。结合图解拆解双指针的核心思想：每次移动水位较低的一侧，把「接水量取决于左右最大值中较小者」这一关键性质讲透。
 ---

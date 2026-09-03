@@ -22,10 +22,8 @@
               <time class="post-date" :datetime="post.date">{{ formatDate(post.date) }}</time>
               <span class="post-reading-time">{{ readingTime }}</span>
             </div>
-            <div v-if="post.category" class="post-tags">
-              <CategoryBadge :category="post.category" />
-            </div>
-            <div v-if="post.tags.length" class="post-tags">
+            <div v-if="post.category || post.tags.length" class="post-tags">
+              <CategoryBadge v-if="post.category" :category="post.category" />
               <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
             </div>
           </header>
@@ -231,7 +229,7 @@ watch(() => props.slug, () => {
 .post-title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: -1px; line-height: 1.3; margin-bottom: var(--space-md); }
 .post-meta { display: flex; align-items: center; gap: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-md); }
 .post-reading-time::before { content: "\00B7"; margin-right: var(--space-md); }
-.post-tags { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
+.post-tags { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-sm); }
 .post-content { font-size: var(--text-lg); line-height: 1.8; color: var(--color-text); max-width: var(--max-width); }
 .post-content :deep(h2), .post-content :deep(h3) { font-weight: 600; line-height: 1.3; margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
 .post-content :deep(h2) { font-size: var(--text-2xl); padding-bottom: var(--space-xs); border-bottom: 1px solid var(--color-border); }

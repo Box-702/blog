@@ -8,10 +8,8 @@
       <span class="post-reading-time">{{ readingTime }}</span>
     </div>
     <p v-if="post.summary" class="post-summary">{{ post.summary }}</p>
-    <div v-if="post.category" class="post-tags">
-      <CategoryBadge :category="post.category" />
-    </div>
-    <div v-if="post.tags.length" class="post-tags">
+    <div v-if="post.category || post.tags.length" class="post-tags">
+      <CategoryBadge v-if="post.category" :category="post.category" />
       <TagBadge v-for="tag in post.tags" :key="tag" :tag="tag" />
     </div>
   </article>
@@ -51,5 +49,10 @@ function formatDate(dateStr) {
 .post-reading-time { font-size: var(--text-xs); color: var(--color-text-muted); }
 .post-reading-time::before { content: "\00B7"; margin-right: var(--space-sm); }
 .post-summary { font-size: var(--text-base); color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-md); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.post-tags { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
 </style>
