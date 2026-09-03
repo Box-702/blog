@@ -3,6 +3,7 @@ title: LeetCode 42. 接雨水 —— 双指针解法详解
 date: 2026-06-18
 category: 算法
 tags: [LeetCode, 算法, 双指针, Python]
+image: /blog/trapping-rain-water.png
 summary: 从暴力到动态规划，再到 O(1) 空间的双指针，彻底理解 LeetCode 42「接雨水」。结合图解拆解双指针的核心思想：每次移动水位较低的一侧，把「接水量取决于左右最大值中较小者」这一关键性质讲透。
 ---
 
@@ -104,7 +105,11 @@ class Solution:
 
 下面这张图展示了双指针收缩的某一时刻：`left` 指针指向左侧柱子，`right` 指针指向右侧柱子，虚线是当前的水位线。
 
-![接雨水双指针示意图](/blog/trapping-rain-water.png)
+<picture>
+  <source srcset="/blog/trapping-rain-water.avif" type="image/avif">
+  <source srcset="/blog/trapping-rain-water.webp" type="image/webp">
+  <img src="/blog/trapping-rain-water.png" alt="接雨水双指针示意图" width="1886" height="1125" loading="lazy">
+</picture>
 
 图中 `leftMax = 2`、`rightMax = 2`，蓝色柱子正是当前 `right` 指针所在位置 `height[right] = 2`，此时：
 

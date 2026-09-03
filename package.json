@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && node scripts/generate-rss.js",
+    "preview": "vite preview",
+    "rss": "node scripts/generate-rss.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

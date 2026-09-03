@@ -49,6 +49,7 @@ export function getAllPosts() {
         category: data.category || '',
         tags: Array.isArray(data.tags) ? data.tags : (data.tags ? [data.tags] : []),
         summary: data.summary || '',
+        image: data.image || '',
         content
       }
     })

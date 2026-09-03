@@ -30,7 +30,17 @@ import { computed, onMounted, watch, nextTick } from 'vue'
 import { getPost } from '@/utils/posts'
 import { marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+import bash from 'highlight.js/lib/languages/bash'
+import css from 'highlight.js/lib/languages/css'
+import json from 'highlight.js/lib/languages/json'
+import yaml from 'highlight.js/lib/languages/yaml'
+import markdown from 'highlight.js/lib/languages/markdown'
+import xml from 'highlight.js/lib/languages/xml'
+import dockerfile from 'highlight.js/lib/languages/dockerfile'
 import 'highlight.js/styles/github-dark.min.css'
 import { useSEO } from '@/composables/useSEO'
 import TagBadge from '@/components/TagBadge.vue'
@@ -39,14 +49,30 @@ import CommentSection from '@/components/CommentSection.vue'
 import TableOfContents from '@/components/TableOfContents.vue'
 import PrevNextNav from '@/components/PrevNextNav.vue'
 
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('yaml', yaml)
+hljs.registerLanguage('markdown', markdown)
+hljs.registerLanguage('xml', xml)
+hljs.registerLanguage('dockerfile', dockerfile)
+
 const props = defineProps({ slug: String })
 const post = computed(() => getPost(props.slug))
+
+// Map a few non-core fence languages to a registered highlighter; the rest
+// fall back to auto-detection.
+const LANG_ALIASES = { vue: 'xml', bash: 'bash' }
 
 marked.use(markedHighlight({
   langPrefix: 'hljs language-',
   highlight(code, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      return hljs.highlight(code, { language: lang }).value
+    const l = (lang && LANG_ALIASES[lang]) || lang
+    if (l && hljs.getLanguage(l)) {
+      return hljs.highlight(code, { language: l }).value
     }
     return hljs.highlightAuto(code).value
   }
@@ -108,7 +134,15 @@ function enhanceContent() {
 
 onMounted(() => {
   if (post.value) {
-    useSEO({ title: post.value.title, description: post.value.summary })
+    useSEO({
+      title: post.value.title,
+      description: post.value.summary,
+      type: 'article',
+      url: `/post/${post.value.slug}`,
+      publishedTime: post.value.date,
+      tags: post.value.tags,
+      image: post.value.image
+    })
   }
   nextTick(enhanceContent)
 })
@@ -116,7 +150,15 @@ onMounted(() => {
 watch(renderedContent, () => nextTick(enhanceContent))
 watch(() => props.slug, () => {
   if (post.value) {
-    useSEO({ title: post.value.title, description: post.value.summary })
+    useSEO({
+      title: post.value.title,
+      description: post.value.summary,
+      type: 'article',
+      url: `/post/${post.value.slug}`,
+      publishedTime: post.value.date,
+      tags: post.value.tags,
+      image: post.value.image
+    })
   }
 })
 </script>

@@ -23,7 +23,7 @@ import Blogroll from '@/components/Blogroll.vue'
 const posts = getAllPosts()
 
 onMounted(() => {
-  useSEO({ title: '', description: 'Thoughts on frontend, code, and life.' })
+  useSEO({ title: '', description: 'Thoughts on frontend, code, and life.', type: 'website', url: '/' })
 })
 </script>
 
