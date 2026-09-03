@@ -1,9 +1,9 @@
 <template>
   <div class="home container">
     <section class="hero">
-      <h1 class="hero-title">写代码、工具，以及做东西的手艺。</h1>
+      <h1 class="hero-title">写代码、做工具，记录一路的想法。</h1>
       <p class="hero-sub">
-        关于前端、算法与开发工具的笔记：Vue、CSS、Git、Docker 和 LeetCode。
+        关于开发、算法与工具的笔记：前端、后端、Git、Docker、LeetCode……
         一边学一边写，脚印都是新的。
       </p>
       <div class="hero-stats">
@@ -44,7 +44,7 @@ const categories = getAllCategories()
 const tags = getAllTags()
 
 onMounted(() => {
-  useSEO({ title: '', description: '一个关于前端、算法与开发工具的个人博客。', type: 'website', url: '/' })
+  useSEO({ title: '', description: '一个记录开发、算法与工具学习过程与踩坑心得的个人博客。', type: 'website', url: '/' })
 })
 </script>
 

@@ -80,7 +80,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <channel>
   <title>我的博客</title>
   <link>${SITE}/</link>
-  <description>写代码、工具与做东西的手艺。</description>
+  <description>记录开发、算法与工具学习过程的个人博客。</description>
   <language>zh-CN</language>
   <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
   <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml"/>
