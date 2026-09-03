@@ -1,7 +1,7 @@
 ---
 title: Vue 3 组合式 API 入门笔记
 date: 2026-05-05
-tags: [Vue, 前端]
+tags: [Vue]
 category: 前端
 summary: ref、reactive、computed、watch 的基本用法和踩坑记录。
 ---

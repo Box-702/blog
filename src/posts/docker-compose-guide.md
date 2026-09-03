@@ -1,7 +1,7 @@
 ---
 title: Docker 与 Docker Compose 实战指南 — 从入门到管理多容器项目
 date: 2026-09-03
-tags: [Docker, 部署, 后端, 工具]
+tags: [Docker, 部署, 工具]
 category: 后端
 summary: 深入理解 Docker 的核心概念与常用命令，学会用 Dockerfile 构建镜像，并用 Docker Compose 一句话启动和管理多容器项目。包含从零搭建一个前后端分离应用的可运行示例与常见坑点。
 ---

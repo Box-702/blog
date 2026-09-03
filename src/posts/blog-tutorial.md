@@ -1,7 +1,7 @@
 ---
 title: 个人博客搭建教程 — Vue 3 + Vite + GitHub Pages 零成本部署
 date: 2026-05-08
-tags: [教程, 前端, Vue]
+tags: [教程, Vue]
 category: 前端
 summary: 从零搭建一个 Markdown 驱动的个人博客，支持暗色模式、全文搜索、代码高亮、评论系统，免费部署到 GitHub Pages。包含完整的使用方法和自定义指南。
 ---

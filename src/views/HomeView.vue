@@ -1,5 +1,18 @@
 <template>
   <div class="home container">
+    <section class="hero">
+      <h1 class="hero-title">Writing about code, tooling, and the craft of building things.</h1>
+      <p class="hero-sub">
+        Notes on frontend, algorithms, and dev tools: Vue, CSS, Git, Docker, and LeetCode.
+        Written while I learn, so the trails are fresh.
+      </p>
+      <div class="hero-stats">
+        <span class="stat">{{ posts.length }} posts</span>
+        <span class="stat">{{ categories.length }} categories</span>
+        <span class="stat">{{ tags.length }} tags</span>
+      </div>
+    </section>
+
     <div class="layout layout-2col">
       <main class="layout-main">
         <SearchBar />
@@ -17,7 +30,7 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { getAllPosts } from '@/utils/posts'
+import { getAllPosts, getAllCategories, getAllTags } from '@/utils/posts'
 import { useSEO } from '@/composables/useSEO'
 import PostList from '@/components/PostList.vue'
 import SearchBar from '@/components/SearchBar.vue'
@@ -27,14 +40,42 @@ import ProfileSection from '@/components/ProfileSection.vue'
 import Blogroll from '@/components/Blogroll.vue'
 
 const posts = getAllPosts()
+const categories = getAllCategories()
+const tags = getAllTags()
 
 onMounted(() => {
-  useSEO({ title: '', description: 'Thoughts on frontend, code, and life.', type: 'website', url: '/' })
+  useSEO({ title: '', description: 'A personal blog about frontend, algorithms, and dev tools.', type: 'website', url: '/' })
 })
 </script>
 
 <style scoped>
 .home {
   padding-bottom: var(--space-2xl);
+}
+.hero {
+  margin: var(--space-2xl) 0 var(--space-2xl);
+  max-width: 720px;
+}
+.hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+}
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.stat {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 </style>

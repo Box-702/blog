@@ -10,14 +10,14 @@ defineProps({ category: String })
 .category-badge {
   display: inline-block;
   font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--color-accent);
-  background: var(--color-tag-bg);
-  padding: 2px 10px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-accent);
+  padding: 3px 12px;
   border-radius: 12px;
   transition: opacity 0.2s;
 }
 .category-badge:hover {
-  opacity: 0.8;
+  opacity: 0.82;
 }
 </style>

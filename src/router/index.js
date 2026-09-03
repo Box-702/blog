@@ -5,9 +5,6 @@ const routes = [
   { path: '/post/:slug', name: 'post', component: () => import('@/views/PostView.vue'), props: true },
   { path: '/tag/:tag', name: 'tag', component: () => import('@/views/TagView.vue'), props: true },
   { path: '/category/:category', name: 'category', component: () => import('@/views/CategoryView.vue'), props: true },
-  { path: '/categories', name: 'categories', component: () => import('@/views/CategoriesView.vue') },
-  { path: '/tags', name: 'tags', component: () => import('@/views/TagsView.vue') },
-  { path: '/archive', name: 'archive', component: () => import('@/views/ArchiveView.vue') },
   { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/views/NotFound.vue') }
 ]
 

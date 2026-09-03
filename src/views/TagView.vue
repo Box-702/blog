@@ -3,7 +3,7 @@
     <div class="layout layout-2col">
       <main class="layout-main">
         <header class="tag-header">
-          <router-link to="/tags" class="tag-back">&larr; All Tags</router-link>
+          <router-link to="/" class="tag-back">&larr; Home</router-link>
           <h1 class="tag-title">{{ tag }}</h1>
           <p class="tag-count">{{ posts.length }} article(s)</p>
         </header>

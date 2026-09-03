@@ -1,7 +1,7 @@
 ---
 title: Vite 入门指南
 date: 2026-05-07
-tags: [前端, 工具]
+tags: [工具]
 category: 前端
 summary: 了解为什么 Vite 成为现代前端开发的首选构建工具。
 ---
