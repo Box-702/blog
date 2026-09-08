@@ -3,7 +3,7 @@ title: Python ORM 速查笔记 — SQLAlchemy 2.0 核心用法
 date: 2026-09-10
 tags: [Python, ORM, SQLAlchemy, 数据库]
 category: 后端
-summary: 简明扼要的 Python ORM 速查笔记。以 SQLAlchemy 2.0 为主线，覆盖模型定义、增删改查、查询、关系映射、事务与会话管理，并补充 Django ORM 与异步方案的对比，方便随时查用。
+summary: 简明扼要的 Python ORM 速查笔记。以 SQLAlchemy 2.0 为主线，覆盖模型定义、增删改查、查询与联表、关系映射、唯一约束、事务与会话管理，并补充 Django ORM 与异步方案的对比，方便随时查用。
 ---
 
 # Python ORM 速查笔记 — SQLAlchemy 2.0 核心用法
@@ -116,6 +116,24 @@ Base.metadata.create_all(engine)
 - `relationship` 描述对象关联，`back_populates` 让两端双向关联。
 - 建表、改表别用 `create_all`，生产环境用 **Alembic**。
 
+**联合唯一约束**：单字段唯一用 `unique=True`；多字段组合唯一（如防止重复收藏）用 `UniqueConstraint`：
+
+```python
+from sqlalchemy import UniqueConstraint
+
+class Favorite(Base):
+    __tablename__ = "favorites"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"))
+
+    # 同一用户对同一文章只能收藏一次，违反时插入报错
+    __table_args__ = (
+        UniqueConstraint("user_id", "post_id", name="user_post_unique"),
+    )
+```
+
 ### 3. 增删改查（CRUD）
 
 ```python
@@ -167,6 +185,20 @@ count = session.execute(select(func.count()).select_from(User)).scalar()
 # 去重 / 取第一条
 first = session.execute(select(User).order_by(User.id)).scalars().first()
 ```
+
+**联表查询**：`select(主体模型, 关联表字段.label("别名")).join(关联模型, 条件)`，`.label()` 给字段重命名，结果是行元组：
+
+```python
+sel = (
+    select(Post, User.name.label("author_name"))
+    .join(User, Post.user_id == User.id)
+)
+
+for post, author_name in session.execute(sel):
+    print(post.title, author_name)
+```
+
+如果只是为了取关联对象（不额外取字段），用下面的 `selectinload` 预加载即可，不用手写 join。
 
 常用查询方法：
 
@@ -341,6 +373,8 @@ Django 的 `objects` 就是它的「Session+select」入口，风格更简洁，
 | 更新 | 改对象属性 → `commit`，或 `update().values()` |
 | 删除 | `session.delete(obj)` 或 `delete().where(...)` |
 | 关联 | `ForeignKey` + `relationship(back_populates=...)` |
+| 联表查询 | `select(A, B.x.label("y")).join(B, 条件)` |
+| 联合唯一 | `__table_args__ = (UniqueConstraint(...),)` |
 | 防 N+1 | `options(selectinload(...))` |
 | 异步 | `create_async_engine` + `async_sessionmaker` |
 
