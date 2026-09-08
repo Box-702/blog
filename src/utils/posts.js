@@ -7,6 +7,7 @@ import dockerComposeRaw from '../posts/docker-compose-guide.md?raw'
 import leetcode42Raw from '../posts/leetcode-42-trapping-rain-water.md?raw'
 import pythonOrmRaw from '../posts/python-orm.md?raw'
 import pydanticResponseRaw from '../posts/pydantic-response-wrapper.md?raw'
+import redisCacheRaw from '../posts/redis-cache.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -38,7 +39,8 @@ const postFiles = {
   '../posts/docker-compose-guide.md': dockerComposeRaw,
   '../posts/leetcode-42-trapping-rain-water.md': leetcode42Raw,
   '../posts/python-orm.md': pythonOrmRaw,
-  '../posts/pydantic-response-wrapper.md': pydanticResponseRaw
+  '../posts/pydantic-response-wrapper.md': pydanticResponseRaw,
+  '../posts/redis-cache.md': redisCacheRaw
 }
 
 export function getAllPosts() {
