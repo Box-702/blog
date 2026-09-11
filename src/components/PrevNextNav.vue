@@ -20,9 +20,15 @@ import { getAllPosts } from '@/utils/posts'
 const props = defineProps({ currentSlug: String })
 
 const allPosts = getAllPosts()
-const currentIdx = allPosts.findIndex(p => p.slug === props.currentSlug)
-const prev = computed(() => currentIdx < allPosts.length - 1 ? allPosts[currentIdx + 1] : null)
-const next = computed(() => currentIdx > 0 ? allPosts[currentIdx - 1] : null)
+const currentIdx = computed(() => allPosts.findIndex(p => p.slug === props.currentSlug))
+const prev = computed(() => {
+  const i = currentIdx.value
+  return i >= 0 && i < allPosts.length - 1 ? allPosts[i + 1] : null
+})
+const next = computed(() => {
+  const i = currentIdx.value
+  return i > 0 ? allPosts[i - 1] : null
+})
 </script>
 
 <style scoped>
