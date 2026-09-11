@@ -8,6 +8,8 @@ import leetcode42Raw from '../posts/leetcode-42-trapping-rain-water.md?raw'
 import pythonOrmRaw from '../posts/python-orm.md?raw'
 import pydanticResponseRaw from '../posts/pydantic-response-wrapper.md?raw'
 import redisCacheRaw from '../posts/redis-cache.md?raw'
+import jsonRpcRaw from '../posts/json-rpc.md?raw'
+import a2aProtocolRaw from '../posts/a2a-protocol.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -40,7 +42,9 @@ const postFiles = {
   '../posts/leetcode-42-trapping-rain-water.md': leetcode42Raw,
   '../posts/python-orm.md': pythonOrmRaw,
   '../posts/pydantic-response-wrapper.md': pydanticResponseRaw,
-  '../posts/redis-cache.md': redisCacheRaw
+  '../posts/redis-cache.md': redisCacheRaw,
+  '../posts/json-rpc.md': jsonRpcRaw,
+  '../posts/a2a-protocol.md': a2aProtocolRaw
 }
 
 export function getAllPosts() {
