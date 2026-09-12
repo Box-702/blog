@@ -10,6 +10,7 @@ import pydanticResponseRaw from '../posts/pydantic-response-wrapper.md?raw'
 import redisCacheRaw from '../posts/redis-cache.md?raw'
 import jsonRpcRaw from '../posts/json-rpc.md?raw'
 import a2aProtocolRaw from '../posts/a2a-protocol.md?raw'
+import functionCallingMcpRaw from '../posts/function-calling-and-mcp.md?raw'
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
@@ -44,7 +45,8 @@ const postFiles = {
   '../posts/pydantic-response-wrapper.md': pydanticResponseRaw,
   '../posts/redis-cache.md': redisCacheRaw,
   '../posts/json-rpc.md': jsonRpcRaw,
-  '../posts/a2a-protocol.md': a2aProtocolRaw
+  '../posts/a2a-protocol.md': a2aProtocolRaw,
+  '../posts/function-calling-and-mcp.md': functionCallingMcpRaw
 }
 
 export function getAllPosts() {
